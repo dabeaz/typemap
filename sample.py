@@ -1,4 +1,5 @@
 # sample.py
+# -*- coding: utf-8 -*-
 #
 # An example of Typemap - The Annotator (TM).
 
