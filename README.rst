@@ -75,7 +75,7 @@ FAQ
 
 *How do you type V̵ and Ǝ?*
 
-The V̵ character is the sequence 'V\u0335'. The Ǝ character is '\u018e'.
+The V̵ character is the sequence `'V\u0335'`. The Ǝ character is `'\u018e'`.
 The easiest way to get these is probably to cut and paste them out
 of a document that shows them displayed correctly.   If you absolutely must, you
 can use ``all_`` and ``prefix_`` as substitutes.  However, keep mind that
