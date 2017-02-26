@@ -1,2 +1,0 @@
-# typemap
-Typemap - The Annotator
