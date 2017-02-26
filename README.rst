@@ -85,7 +85,7 @@ good type annotations should be hard to type.
 
 No, not tests, types.
 
-*WHY?*/
+*WHY?*
 
 Is it not obvious?
 
