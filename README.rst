@@ -78,7 +78,7 @@ FAQ
 The V̵ character is the sequence ``'V\u0335'``. The Ǝ character is ``'\u018e'``.
 The easiest way to get these is probably to cut and paste them out
 of a document that shows them displayed correctly.   If you absolutely must, you
-can use ``all_`` and ``prefix_`` as substitutes.  However, keep mind that
+can use ``all_`` and ``prefix_`` as substitutes.  However, keep in mind that
 good type annotations should be hard to type. 
 
 *Why do you have to import typemap at the bottom?*
@@ -102,6 +102,3 @@ Is it not obvious?
 Typemap - The Annotator (TM) is the brainchild of David Beazley (@dabeaz) 
 who disavows all knowledge of it and who should probably be working on
 his book instead.
-
-
-
