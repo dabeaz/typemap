@@ -81,6 +81,10 @@ of a document that shows them displayed correctly.   If you absolutely must, you
 can use ``all_`` and ``prefix_`` as substitutes.  However, keep mind that
 good type annotations should be hard to type. 
 
+*Why do you have to import typemap at the bottom?*
+
+Reasons.  Think of it as a kind of module decorator. 
+
 *Are there any unit tests?*
 
 No, not tests, types.
