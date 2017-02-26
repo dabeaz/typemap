@@ -85,6 +85,10 @@ good type annotations should be hard to type.
 
 No, not tests, types.
 
+*Is there any more documentation?*
+
+No, not documentation, types.
+
 *WHY?*
 
 Is it not obvious?
