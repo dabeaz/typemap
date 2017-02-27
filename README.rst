@@ -102,6 +102,10 @@ of a document that shows them displayed correctly.   If you absolutely must, you
 can use ``all_`` and ``prefix_`` as substitutes.  However, keep in mind that
 good type annotations should be hard to type. 
 
+*Why do the special characters look garbled or incorrect?*
+
+Maybe your fonts aren't advanced enough to use typemap. 
+
 *Why do you have to call typemap() at the bottom?*
 
 Reasons.  Think of it as a kind of module decorator. 
