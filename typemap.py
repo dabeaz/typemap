@@ -7,11 +7,7 @@
 
 import inspect
 import sys
-import importlib
 from collections import ChainMap
-
-_typemap = True
-__all__ = [ '_typemap' ]
 
 def _get_typemaps(module):
     if not hasattr(module, '__annotations__'):
@@ -73,47 +69,16 @@ def _apply_typemap(module, modulename=None, typemaps=None):
         elif isinstance(val, (staticmethod, classmethod)):
             _annotate(val.__func__, typemaps, prefixes)
 
-class TypemapFinder:
-    def __init__(self):
-        self._skip = set()
+class Typemap:
+    def __call__(self, *mods):
+        if mods:
+            typemaps = ChainMap(*(_get_typemaps(mod) for mod in mods))
+        else:
+            typemaps = None
+        module = sys.modules[sys._getframe(1).f_globals['__name__']]
+        _apply_typemap(module, module.__name__, typemaps)
 
-    def find_module(self, fullname, path=None):
-        if fullname in self._skip:
-            return None
-        self._skip.add(fullname)
-        return TypemapLoader(self)
-
-class TypemapLoader:
-    def __init__(self, finder):
-        self._finder = finder
-
-    def load_module(self, fullname):
-        try:
-            importlib.import_module(fullname)
-            module = sys.modules[fullname]
-            if getattr(module, '_typemap', False):
-                _apply_typemap(module, module.__name__)
-            return module            
-        finally:
-            self._finder._skip.discard(fullname)
-
-def _patch_importer():
-    n = 2
-    try:
-        while True:
-            f = sys._getframe(n)
-            if f.f_globals.get('__annotations__'):
-                module = sys.modules[f.f_globals['__name__']]
-                typemaps = _get_typemaps(module)
-                if typemaps:
-                    _apply_typemap(module, module.__name__)
-                    return
-            n += 1
-    except ValueError:
-        pass
-
-sys.meta_path.insert(0, TypemapFinder())
-_patch_importer()
+sys.modules[__name__] = Typemap()
 
         
 

@@ -3,15 +3,17 @@
 #
 # An example of Typemap - The Annotator (TM).
 
+import typemap
+
 # Define some typemaps
 V̵x: int
 V̵y: int
 
 # Now, define some functions.  You'll see the arguments annotated.
-def add(x, y):       # (x: int, y: int)
+def add(x, y):
     return x + y
 
-def sub(x, y):       # (x: int, y: int)
+def sub(x, y):
     return x - y
 
 # Typemaps can be applied in a class.  In this case, they get
@@ -21,34 +23,32 @@ def sub(x, y):       # (x: int, y: int)
 class Spam:
     V̵z: int
 
-    # Annotated as: (x:int, y:int, z:int)
     def __init__(self, x, y, z):      
         self.x = x
         self.y = y
         self.z = z
 
-    # static and class methods work
     @staticmethod
-    def foo(x, y):        # (x:int, y:int)
+    def foo(x, y):
         pass
 
     @classmethod
-    def bar(cls, z):       # (cls, z:int)
+    def bar(cls, z):
         pass
 
 # Inheritance propagates any previously defined typemaps
 class Child(Spam):
 
-    def yow(self, z):     # (self, z: int)
+    def yow(self, z):
         pass
 
 # You can write typemaps for a common prefix too
 Ǝf_: float
 
-def mul(f_x, f_y):         # (f_x: float, f_y: float)
+def mul(f_x, f_y):
     return f_x * f_y
 
-def div(f_x, f_y):         # (f_x: float, f_y: float)
+def div(f_x, f_y):
     return f_x / f_y
 
 # Naturally, anything from the typing module will work
@@ -62,17 +62,32 @@ V̵integers: Iterable[int]
 def int_sum(integers):    # (integers: Iterable[int]) -> int
     pass
 
-def int_max(integers):    # (integers: Iterable[int]) -> int
+def int_max(integers):
     pass
 
-def int_min(integers):    # (integers: Iterable[int]) -> int
+def int_min(integers):
     pass
 
-# Don't forget this part.  It has to go at the end.
-from typemap import *
+# Apply the typemaps
+typemap()
 
 # You're done. A nicely defined Python module with type annotations.
 # Enjoy!
+
+# Look at the resulting definitions, see their type annotations
+from inspect import signature
+
+print(add, signature(add))
+print(sub, signature(sub))
+print(Spam.__init__,  signature(Spam))
+print(Spam.foo, signature(Spam.foo))
+print(Spam.bar, signature(Spam.bar))
+print(Child.yow, signature(Child.yow))
+print(mul, signature(mul))
+print(div, signature(div))
+print(int_sum, signature(int_sum))
+print(int_max, signature(int_max))
+print(int_min, signature(int_min))
 
 
 
