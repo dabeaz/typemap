@@ -1,11 +1,12 @@
 # tmaps.py
+# -*- coding: typemap -*-
 #
 # A library module of typemaps
 
 from typing import Sequence
 
-V̵x: int
-V̵y: int
-V̵filename: str
-V̵data: Sequence[int]
+∀x: int
+∀y: int
+∀filename: str
+∀data: Sequence[int]
 

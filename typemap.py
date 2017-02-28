@@ -78,6 +78,28 @@ class Typemap:
         module = sys.modules[sys._getframe(1).f_globals['__name__']]
         _apply_typemap(module, module.__name__, typemaps)
 
+
+# Special codec to allow actual U+2200 and U+2203 characters in typemaps
+import codecs
+
+def encode(input, errors='strict'):
+    return (input.encode('utf-8', errors), len(input))
+
+def decode(input, errors='strict'):
+    return (bytes(input).decode('utf-8', errors).replace('\u2200', 'V\u0335').replace('\u2203', '\u018e'), len(input))
+
+def lookup(name):
+    if name == 'typemap':
+        return codecs.CodecInfo(
+            name='typemap',
+            encode=encode,
+            decode=decode,
+        )
+    else:
+        return None
+
+codecs.register(lookup)
+
 sys.modules[__name__] = Typemap()
 
         
