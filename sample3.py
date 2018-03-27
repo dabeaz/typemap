@@ -2,6 +2,8 @@
 # -*- coding: typemap -*-
 #
 # An example of Typemap - The Annotator (TM).
+# This file uses the mathematical quantifier symbols and a special source
+# codecs.
 
 import typemap
 

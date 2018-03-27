@@ -8,14 +8,14 @@
 import inspect
 import sys
 from collections import ChainMap
-
+    
 def _get_typemaps(module):
     if not hasattr(module, '__annotations__'):
         return { }
     typemaps = { }
     for key, val in module.__annotations__.items():
-        if key[:2] == 'V\u0335':
-            typemaps[key[2:]] = val
+        if key[:1] == '\u15c4':
+            typemaps[key[1:]] = val
         elif key[:4] == 'all_':
             typemaps[key[4:]] = val
         elif key[:1] == '\u018e':
@@ -58,7 +58,7 @@ def _apply_typemap(module, modulename=None, typemaps=None):
 
     prefixes = [ (key[:-1], val) for key, val in typemaps.items() if key[-1:] == '*' ]
 
-    for key, val in vars(module).items():
+    for key, val in list(vars(module).items()):
         if callable(val):
             if getattr(val, '__module__', None) != modulename:
                 continue
@@ -86,7 +86,7 @@ def encode(input, errors='strict'):
     return (input.encode('utf-8', errors), len(input))
 
 def decode(input, errors='strict'):
-    return (bytes(input).decode('utf-8', errors).replace('\u2200', 'V\u0335').replace('\u2203', '\u018e'), len(input))
+    return (bytes(input).decode('utf-8', errors).replace('\u2200', '\u15c4').replace('\u2203', '\u018e'), len(input))
 
 def lookup(name):
     if name == 'typemap':

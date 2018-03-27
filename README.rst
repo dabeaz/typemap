@@ -8,8 +8,8 @@ example::
     # sample1.py
     import typemap
 
-    V̵x: int
-    V̵y: int
+    ᗄx: int
+    ᗄy: int
 
     def add(x, y):
         return x + y
@@ -60,8 +60,8 @@ Naturally, you can also use typemaps in class definitions::
     import typemap
 
     class Spam:
-        V̵x: int
-        V̵y: int
+        ᗄx: int
+        ᗄy: int
         def __init__(self, x,  y):
             self.x = x
             self.y = y
@@ -94,9 +94,9 @@ See the file ``sample.py`` for more examples.
 FAQ
 ---
 
-*How do you type V̵ and Ǝ?*
+*How do you type ᗄ and Ǝ?*
 
-The V̵ character is the sequence ``'V\u0335'``. The Ǝ character is ``'\u018e'``.
+The ᗄ character is the sequence ``'\u15c4'``. The Ǝ character is ``'\u018e'``.
 The easiest way to get these is probably to cut and paste them out
 of a document that shows them displayed correctly.   If you absolutely must, you
 can use ``all_`` and ``prefix_`` as substitutes.  However, keep in mind that

@@ -6,8 +6,8 @@
 import typemap
 
 # Define some typemaps
-V̵x: int
-V̵y: int
+ᗄx: int
+ᗄy: int
 
 # Now, define some functions.  You'll see the arguments annotated.
 def add(x, y):
@@ -21,7 +21,7 @@ def sub(x, y):
 # typemaps although local redefinitions will override.
 
 class Spam:
-    V̵z: int
+    ᗄz: int
 
     def __init__(self, x, y, z):      
         self.x = x
@@ -54,7 +54,7 @@ def div(f_x, f_y):
 # Naturally, anything from the typing module will work
 from typing import Iterable
 
-V̵integers: Iterable[int]
+ᗄintegers: Iterable[int]
 
 # And typemaps can apply to function names to set return types
 Ǝint_: int

@@ -5,8 +5,8 @@
 
 from typing import Sequence
 
-∀x: int
-∀y: int
-∀filename: str
-∀data: Sequence[int]
+ᗄx: int
+ᗄy: int
+ᗄfilename: str
+ᗄdata: Sequence[int]
 
