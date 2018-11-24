@@ -146,3 +146,7 @@ Is it not obvious?
 Typemap - The Annotator (TM) is the brainchild of David Beazley (@dabeaz) 
 who disavows all knowledge of it and who should probably be working on
 his book instead.
+
+**P.S.**
+
+You should come take a `course <https://www.dabeaz.com/courses.html>`_.
