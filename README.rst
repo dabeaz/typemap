@@ -6,7 +6,6 @@ by name, using simple "type quantifier" operators.  Here's a simple
 example::
 
     # sample1.py
-    import typemap
 
     ᗄx: int
     ᗄy: int
@@ -17,7 +16,7 @@ example::
     def sub(x, y):
         return x - y 
 
-    typemap()
+    import typemap; typemap()
 
 In this case, the "for all" type quantifier attaches the given type
 annotation to all occurrences of a given name.  You can see this
@@ -35,7 +34,6 @@ the "there exists" type quantifier.  If there exists a
 given prefix, then it gets a type annotation.  For example::
 
     # sample2.py
-    import typemap
 
     Ǝi: int
 
@@ -45,7 +43,7 @@ given prefix, then it gets a type annotation.  For example::
     def sub(ix, iy):
         return ix - iy
 
-    typemap()
+    import typemap; typemap()
 
 It's one less line of typing (sic) and it still works::
 
@@ -57,7 +55,6 @@ It's one less line of typing (sic) and it still works::
 Naturally, you can also use typemaps in class definitions::
 
     # sample3.py
-    import typemap
 
     class Spam:
         ᗄx: int
@@ -69,7 +66,7 @@ Naturally, you can also use typemaps in class definitions::
         def yow(self, x):
             pass
 
-    typemap()
+    import typemap; typemap()
 
 Typemaps are inherited.  Thus, this class gets the same typemaps as
 the parent class::
@@ -78,7 +75,7 @@ the parent class::
         def bar(self, x, y):
             pass
 
-    typemap()
+    import typemap; typemap()
 
 Look at some of the annotations::
 
@@ -94,7 +91,7 @@ See the file ``sample.py`` for more examples.
 FAQ
 ---
 
-*How do you type ᗄ and Ǝ?*
+**How do you type ᗄ and Ǝ?**
 
 The ᗄ character is U+15C4. The Ǝ character is U+018E.
 The easiest way to get these is probably to cut and paste them out
@@ -102,7 +99,7 @@ of a document that shows them displayed correctly.   If you absolutely must, you
 can use ``all_`` and ``prefix_`` as substitutes.  However, keep in mind that
 good type annotations should be hard to type. 
 
-*Can you use the mathematical characters ∀ (U+2200) and ∃ (U+2203)?*
+**Can you use the mathematical characters ∀ (U+2200) and ∃ (U+2203)?**
 
 Yes, but ``typemap`` needs to already be imported (from elsewhere) and
 you need to use the special "typemap" source encoding.  For example::
@@ -117,34 +114,34 @@ you need to use the special "typemap" source encoding.  For example::
 
     import typemap; typemap()
 
-*Why do the special characters look garbled or incorrect?*
+**Why do the special characters look garbled or incorrect?**
 
 Maybe your fonts aren't advanced enough to use typemap. 
 
-*Why do you have to call ``import typemap; typemap()`` at the bottom?*
+**Why do you have to call ``import typemap; typemap()`` at the bottom?**
 
 Reasons.  
 
-*Are there any unit tests?*
+**Are there any unit tests?**
 
 No, not tests, types.
 
-*Is there any more documentation?*
+**Is there any more documentation?**
 
 No, not documentation, types.
 
-*How do you deploy typemap in production?*
+**How do you deploy typemap in production?**
 
 Rather than calling overt attention to its use, the best practice is
 to copy the ``typemap.py`` file into your own project and to quietly
 use it internally. No need to add an additional dependency to your
 requirements file.
 
-*WHY?*
+**WHY?**
 
 Is it not obvious?
 
-*Who?*
+**Who?**
 
 Typemap - The Annotator (TM) is the brainchild of David Beazley (@dabeaz) 
 who disavows all knowledge of it and who should probably be working on
