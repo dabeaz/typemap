@@ -3,9 +3,8 @@
 #
 # An example of Typemap - The Annotator (TM).
 # This file uses the mathematical quantifier symbols and a special source
-# codecs.
-
-import typemap
+# codecs.  In order to use this, you need to import typemap separately
+# prior to the import of this module. 
 
 # Define some typemaps
 ∀x: int
@@ -71,7 +70,7 @@ def int_min(integers):
     pass
 
 # Apply the typemaps
-typemap()
+import typemap; typemap()
 
 # You're done. A nicely defined Python module with type annotations.
 # Enjoy!

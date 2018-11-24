@@ -3,8 +3,6 @@
 #
 # An example of Typemap - The Annotator (TM).
 
-import typemap
-
 # Define some typemaps
 ᗄx: int
 ᗄy: int
@@ -68,8 +66,22 @@ def int_max(integers):
 def int_min(integers):
     pass
 
+# Typemaps should work with decorated functions as long as you
+# use @wraps
+from functools import wraps
+
+def decorate(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        return func(*args, **kwargs)
+    return wrapper
+
+@decorate
+def mul(x, y):
+    return x + y
+
 # Apply the typemaps
-typemap()
+import typemap; typemap()
 
 # You're done. A nicely defined Python module with type annotations.
 # Enjoy!
@@ -88,6 +100,7 @@ print(div, signature(div))
 print(int_sum, signature(int_sum))
 print(int_max, signature(int_max))
 print(int_min, signature(int_min))
+print(mul, signature(mul))
 
 
 

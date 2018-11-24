@@ -4,7 +4,6 @@
 # tmaps.py contains the typemaps. Use typemap(tmaps) to incorporate
 # them into the current file.
 
-import typemap
 import tmaps
 
 def add(x, y):
@@ -19,7 +18,7 @@ def read_data(filename):
 def maxvalue(data):
     pass
 
-typemap(tmaps)
+import typemap; typemap(tmaps)
 
 # Look at the applied typemaps
 from inspect import signature

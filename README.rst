@@ -96,19 +96,34 @@ FAQ
 
 *How do you type ᗄ and Ǝ?*
 
-The ᗄ character is the sequence ``'\u15c4'``. The Ǝ character is ``'\u018e'``.
+The ᗄ character is U+15C4. The Ǝ character is U+018E.
 The easiest way to get these is probably to cut and paste them out
 of a document that shows them displayed correctly.   If you absolutely must, you
 can use ``all_`` and ``prefix_`` as substitutes.  However, keep in mind that
 good type annotations should be hard to type. 
 
+*Can you use the mathematical characters ∀ (U+2200) and ∃ (U+2203)?*
+
+Yes, but ``typemap`` needs to already be imported (from elsewhere) and
+you need to use the special "typemap" source encoding.  For example::
+
+    # somefile.py
+    # -*- coding: typemap -*-
+
+    # Define some typemaps
+    ∀x: int
+    ∀y: int
+    ...
+
+    import typemap; typemap()
+
 *Why do the special characters look garbled or incorrect?*
 
 Maybe your fonts aren't advanced enough to use typemap. 
 
-*Why do you have to call typemap() at the bottom?*
+*Why do you have to call ``import typemap; typemap()`` at the bottom?*
 
-Reasons.  Think of it as a kind of module decorator. 
+Reasons.  
 
 *Are there any unit tests?*
 
@@ -117,6 +132,13 @@ No, not tests, types.
 *Is there any more documentation?*
 
 No, not documentation, types.
+
+*How do you deploy typemap in production?*
+
+Rather than calling overt attention to its use, the best practice is
+to copy the ``typemap.py`` file into your own project and to quietly
+use it internally. No need to add an additional dependency to your
+requirements file.
 
 *WHY?*
 
